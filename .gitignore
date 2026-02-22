@@ -10,7 +10,6 @@ converted_full_gpu*/
 logs/
 .deploy_marker.lock
 *.state
-/2404.17625v3.pdf
 experiments
 test_data
 training

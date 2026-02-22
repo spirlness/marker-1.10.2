@@ -1,6 +1,15 @@
 private.py
 .DS_Store
 local.env
+
+# Local/temp artifacts
+%TEMP%/
+coop_translate_workspace/
+converted_*/
+converted_full_gpu*/
+logs/
+.deploy_marker.lock
+*.state
 experiments
 test_data
 training

@@ -41,7 +41,7 @@ Environment overrides:
 
 Examples:
   ./deploy_marker_ubuntu22_a10_uv_prod.sh
-  ./deploy_marker_ubuntu22_a10_uv_prod.sh --convert ./2404.17625v3.pdf --out ./converted_full_gpu_mp --pdftext-workers 8
+  ./deploy_marker_ubuntu22_a10_uv_prod.sh --convert ./your.pdf --out ./converted_full_gpu_mp --pdftext-workers 8
 EOF
 }
 

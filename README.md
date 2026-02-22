@@ -91,7 +91,7 @@ Deploy and immediately convert a PDF with GPU + multiprocessing:
 
 ```shell
 ./deploy_marker_ubuntu22_a10_uv.sh \
-  --convert ./2404.17625v3.pdf \
+  --convert ./your.pdf \
   --out ./converted_full_gpu_mp \
   --pdftext-workers 8
 ```
@@ -101,7 +101,7 @@ Deploy and immediately convert a PDF with GPU + multiprocessing:
 ```shell
 chmod +x deploy_marker_ubuntu22_a10_uv_prod.sh
 ./deploy_marker_ubuntu22_a10_uv_prod.sh \
-  --convert ./2404.17625v3.pdf \
+  --convert ./your.pdf \
   --out ./converted_full_gpu_mp \
   --pdftext-workers 8 \
   --retry 3 \

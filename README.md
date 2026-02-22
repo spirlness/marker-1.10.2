@@ -76,6 +76,58 @@ If you want to use marker on documents other than PDFs, you will need to install
 pip install marker-pdf[full]
 ```
 
+## Ubuntu 22.04 + NVIDIA A10 (uv one-click)
+
+This repository includes deployment scripts tuned for Ubuntu 22.04 with NVIDIA GPUs (including A10 24G), using `uv` to manage Python and dependencies.
+
+### Standard one-click setup
+
+```shell
+chmod +x deploy_marker_ubuntu22_a10_uv.sh
+./deploy_marker_ubuntu22_a10_uv.sh
+```
+
+Deploy and immediately convert a PDF with GPU + multiprocessing:
+
+```shell
+./deploy_marker_ubuntu22_a10_uv.sh \
+  --convert ./2404.17625v3.pdf \
+  --out ./converted_full_gpu_mp \
+  --pdftext-workers 8
+```
+
+### Production setup (logging, retry, resume)
+
+```shell
+chmod +x deploy_marker_ubuntu22_a10_uv_prod.sh
+./deploy_marker_ubuntu22_a10_uv_prod.sh \
+  --convert ./2404.17625v3.pdf \
+  --out ./converted_full_gpu_mp \
+  --pdftext-workers 8 \
+  --retry 3 \
+  --retry-wait 30
+```
+
+The production script adds:
+- log files under `logs/`
+- a state file per run
+- lock file protection against duplicate runs
+- retry on failed conversion attempts
+- resume behavior (skip conversion when output markdown already exists)
+
+### Accuracy tip (code/formula/table fidelity)
+
+For maximum fidelity on inline math and complex tables, run with LLM enhancement (requires API key):
+
+```shell
+TORCH_DEVICE=cuda uv run --python .venv marker_single "<your.pdf>" \
+  --output_format markdown \
+  --output_dir "converted_full_gpu_llm" \
+  --pdftext_workers 8 \
+  --use_llm \
+  --redo_inline_math
+```
+
 # Usage
 
 First, some configuration:
